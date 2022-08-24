@@ -2,8 +2,10 @@
 #include "Program.h"
 #include "LedBlink.h"
 #include "LEDPotentiometer.h"
+#include "ButtonPrint.h"
 
-Program* program = new LedBlink();
+ButtonPrint proc;
+Program* program = &proc;
 void setup() {
     program -> setup();
 }

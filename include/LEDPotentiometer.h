@@ -1,30 +1,32 @@
-// https://www.instructables.com/How-to-use-Potentiometer-Arduino-Tutorial/
+// https://create.arduino.cc/projecthub/SBR/working-with-a-potentiometer-and-an-led-55b9d5
 
 #ifndef HELLOWORLD_LEDPOTENTIOMETER_H
 #define HELLOWORLD_LEDPOTENTIOMETER_H
 
-#include <pins_arduino.h>
+//#include <pins_arduino.h>
 #include <Arduino.h>
 #include "Program.h"
 
 class LEDPotentiometer : public Program {
 public:
     void setup() {
-        pinMode(ledPin, OUTPUT);
-        pinMode(potPin, INPUT);
+        Serial.begin(9600);
+        pinMode(LED_PIN, OUTPUT);
+        pinMode(POT_PIN, INPUT);
     }
 
     void loop() {
-        value = analogRead(potPin);
-        value = map(value, 0, 1023, 0, 255);
-        analogWrite(ledPin, value);
+        int potValue = analogRead(POT_PIN);
+//        int brightness = potValue / 4;
+        int brightness = map(potValue, 0, 1023, 0, 255);
+        analogWrite(LED_PIN, brightness);
         delay(100);
+        Serial.println(potValue);
     }
 
 private:
-    const int ledPin = 10;  //pin 9 has PWM funtion
-    const int potPin = A0; //pin A0 to read analog input
-    int value;
+    const int LED_PIN = 9;  // pin 11 has PWM funtion
+    const int POT_PIN = A5; // pin A1 to read analog input
 };
 
 
