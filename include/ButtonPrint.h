@@ -11,7 +11,7 @@ class ButtonPrint: public Program {
 public:
     void setup() {
         Serial.begin(9600);
-        pinMode(BUTTON_PIN, INPUT_PULLUP);
+        pinMode(BUTTON_PIN, INPUT);
     }
     void loop() {
         int buttonState = digitalRead(BUTTON_PIN);
