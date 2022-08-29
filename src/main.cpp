@@ -4,7 +4,7 @@
 #include "LEDPotentiometer.h"
 #include "ButtonPrint.h"
 
-ButtonPrint proc;
+ButtonPollDebounce proc;
 Program* program = &proc;
 void setup() {
     program -> setup();
